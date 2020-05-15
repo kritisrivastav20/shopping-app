@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.sam.social" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Social App</name>
-    <description>Ionic 5 : Social App Template</description>
+    <name>Fashion App</name>
+    <description>Ionic 5 : Fashion App</description>
     <author email="sampathk.hps18@gmail.com" href="https://github.com/sampathk-hps">SaM</author>
     <content src="index.html" />
     <access origin="*" />
