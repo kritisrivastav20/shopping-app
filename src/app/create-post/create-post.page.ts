@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: 'app-create-post',
@@ -13,6 +13,7 @@ export class CreatePostPage implements OnInit {
   public hashTags: string[] = [];
   public hashInputValue = '';
   public captionInputValue = '';
+  public postImageBase64Value = '';
 
   constructor(
     public modlaCtrl: ModalController,
@@ -41,20 +42,36 @@ export class CreatePostPage implements OnInit {
   }
 
   selectImage() {
-    const options = {
+    const options: ImagePickerOptions = {
       maximumImagesCount: 1,
       outputType: 1,
-      width: 500,
-      height: 500,
       quality: 75
     };
-    this.imagePicker.getPictures(options).then((results) => {
-      for (let i = 0; i < results.length; i++) {
-        console.log('Image URI: ' + results[i]);
+
+    this.imagePicker.hasReadPermission().then((hasPerm) => {
+      console.log('hasReadPermission: ', hasPerm);
+      if (!hasPerm) {
+        this.imagePicker.requestReadPermission().then((permReq) => {
+          console.log('requestReadPermission: ', permReq);
+        }).catch((err) => {
+          console.log('requestReadPermission err: ', err);
+        });
+      } else {
+        this.imagePicker.getPictures(options).then((results) => {
+          console.log('Image URI: ', results);
+          if (results.length !== 0 && results !== 'OK') {
+            this.postImageBase64Value = results[0];
+            this.isPostImageUploaded = true;
+          }
+        }, (err) => {
+          console.log('error in getting image: ', err);
+        });
       }
-    }, (err) => {
-      console.log('error in getting image: ', err);
+
+    }).catch((err) => {
+      console.log('hasReadPermission err: ', err);
     });
+
   }
 
   goToPublishPage() {
