@@ -26,11 +26,21 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 * {
-    font-family: BreeSerif;
+    font-family: BreeSerif !important;
 }
 
 .no-padding-left-right-bottom {
     padding-left: 0% !important;
     padding-right: 0% !important;
     padding-bottom: 0% !important;
+}
+
+.no-padding-left-right-top {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+    padding-top: 0% !important;
+}
+
+.modal-back-button {
+    font-size: 20px;
 }
