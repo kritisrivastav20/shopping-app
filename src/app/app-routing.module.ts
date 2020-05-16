@@ -8,6 +8,10 @@ const routes: Routes = [
   },  {
     path: 'create-post',
     loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+  },
+  {
+    path: 'publish-post',
+    loadChildren: () => import('./publish-post/publish-post.module').then( m => m.PublishPostPageModule)
   }
 
 ];

@@ -7,6 +7,7 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import { CreatePostPage } from '../create-post/create-post.page';
+import { PublishPostPage } from '../publish-post/publish-post.page';
 
 @NgModule({
   imports: [
@@ -17,10 +18,12 @@ import { CreatePostPage } from '../create-post/create-post.page';
   ],
   declarations: [
     TabsPage,
-    CreatePostPage
+    CreatePostPage,
+    PublishPostPage
   ],
   entryComponents: [
-    CreatePostPage
+    CreatePostPage,
+    PublishPostPage
   ]
 })
 export class TabsPageModule { }

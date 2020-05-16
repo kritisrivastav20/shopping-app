@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
+import { PublishPostPage } from '../publish-post/publish-post.page';
 
 @Component({
   selector: 'app-create-post',
@@ -71,13 +72,23 @@ export class CreatePostPage implements OnInit {
     }).catch((err) => {
       console.log('hasReadPermission err: ', err);
     });
-
   }
 
-  goToPublishPage() {
-    if (this.isPostImageUploaded && this.captionInputValue !== '' && this.hashTags.length !== 0) {
-
-    }
+  async goToPublishPage() {
+    // if (this.isPostImageUploaded && this.captionInputValue !== '' && this.hashTags.length !== 0) {
+    const modal = await this.modlaCtrl.create({
+      component: PublishPostPage,
+      componentProps: {
+        postImageValue: this.postImageBase64Value,
+        postDescription: this.captionInputValue,
+        postHashTags: this.hashTags
+      },
+      backdropDismiss: false,
+      animated: true,
+    });
+    await modal.present();
+    const modalResponse = await modal.onDidDismiss();
+    // }
   }
 
 }
