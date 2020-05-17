@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../collections-tab/collections-tab.module').then(m => m.CollectionsTabPageModule)
       },
       {
+        path: 'publish-tab',
+        loadChildren: () => import('../publish-tab/publish-tab.module').then(m => m.PublishTabPageModule)
+      },
+      {
         path: 'menu-tab',
         loadChildren: () => import('../menu-tab/menu-tab.module').then(m => m.MenuTabPageModule)
       },
