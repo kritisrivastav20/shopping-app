@@ -26,9 +26,18 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 * {
-    font-family: BreeSerif !important;
+    font-family: ProductSans !important;
 }
-
+@font-face {
+    font-family: ProductSans;
+    src: url('./assets/font/Helvetica.ttf');
+   
+  }
+@font-face {
+    font-family: ProductSansBold;
+    src: url('./assets/font/helvetica-light-587ebe5a59211.ttf');
+   
+  }
 .no-padding-left-right-bottom {
     padding-left: 0% !important;
     padding-right: 0% !important;
