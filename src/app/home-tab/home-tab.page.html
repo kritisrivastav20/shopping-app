@@ -1,11 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-row>
-      <ion-col size="10" class="ion-no-padding">
-        <ion-label class="app-label">Social</ion-label>
+<ion-header color = "light">
+  <ion-toolbar style="height: 79px" color = "light">
+    <ion-row style="padding-top: 16px" color = "light">
+      <ion-col size="2" style="padding-left: 8px">
+        <ion-button fill="clear" shape="round">
+          <ion-icon src="assets/icon/profileicon.svg" slot="icon-only" color = "tertiary" id = "icon"></ion-icon>
+        </ion-button>
       </ion-col>
-      <ion-col size="2" class="ion-no-padding notification-icon-col">
-        <ion-icon src="assets/icon/bell.svg"></ion-icon>
+      <ion-col align = "center" style="padding-top: 8px">
+        <img src="assets/icon/Shopify.svg" style="width: 40%" alt=""/>
+      </ion-col>
+      <ion-col size="2.5" style="padding-right: 16px; padding-bottom: 4px;">
+        <ion-button fill="clear" id = "button" shape="round">
+          <ion-icon src="assets/icon/Bell.svg" slot="icon-only" color = "tertiary" id = "icon"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -21,53 +28,53 @@
         <ion-label>
           {{ post.name }}
         </ion-label>
-        <ion-button *ngIf="!post.isFollow" expand="block" fill="outline" shape="round" class="follow-button"
-          (click)="post.isFollow=!post.isFollow">
+        <ion-button *ngIf="!post.isFollow" expand="block" fill="solid" color = "success" shape="round" class="follow-button"
+          (click)="post.isFollow=!post.isFollow" style=" margin-right: 8px;">
           Follow
         </ion-button>
-        <ion-button *ngIf="post.isFollow" expand="block" fill="solid" shape="round" class="follow-button"
+        <ion-button *ngIf="post.isFollow" expand="block" fill = "clear" shape="round" class="follow-button" id = "following"
           (click)="post.isFollow=!post.isFollow">
           Following
         </ion-button>
-        <ion-icon src="assets/icon/post-icons/more.svg"></ion-icon>
+        <ion-icon src="assets/icon/options.svg"></ion-icon>
       </ion-item>
       <ion-row>
         <ion-col size="12" class="no-padding-left-right-bottom">
           <img [src]="post.postImg" class="post-img">
           <div class="over-image-options-div">
-            <ion-icon src="assets/icon/post-icons/user.svg" style="padding-right: 10px;"></ion-icon>
-            <ion-icon src="assets/icon/post-icons/bookmark.svg"></ion-icon>
+            <ion-icon src="assets/icon/favwhite.svg"></ion-icon>
           </div>
         </ion-col>
-        <ion-col size="4" class="post-footer-option-col">
-          <ion-icon *ngIf="!post.isLiked" name="heart-outline" class="post-footer-option-icon"
+        <ion-col size="4" id = "actions" align = "start" style="padding-left: 16px">
+          <ion-icon *ngIf="!post.isLiked" src="assets/icon/heart.svg" class="post-footer-option-icon"
             (click)="post.isLiked=!post.isLiked"></ion-icon>
-          <ion-icon *ngIf="post.isLiked" name="heart" class="post-footer-option-icon" color="danger"
+          <ion-icon *ngIf="post.isLiked" src="assets/icon/liked.svg"  class="post-footer-option-icon"
             (click)="post.isLiked=!post.isLiked"></ion-icon>
           <ion-label class="post-footer-option-label">Like</ion-label>
         </ion-col>
-        <ion-col size="4" class="post-footer-option-col">
-          <ion-icon name="chatbubble-outline" class="post-footer-option-icon"></ion-icon>
+        <ion-col size="4.5" id = "actions" align = "start">
+          <ion-icon src="assets/icon/bubble.svg" class="post-footer-option-icon"></ion-icon>
           <ion-label class="post-footer-option-label">Comment</ion-label>
         </ion-col>
-        <ion-col size="4" class="post-footer-option-col">
-          <ion-icon name="share-social-outline" class="post-footer-option-icon"></ion-icon>
+        <ion-col id = "actions" align = "start" style="padding-right: 24px;">
+          <ion-icon src="assets/icon/share.svg" class="post-footer-option-icon"></ion-icon>
           <ion-label class="post-footer-option-label">Share</ion-label>
         </ion-col>
-        <ion-col size="12" style="padding-top: 0%;">
+        <ion-col size="12" style="padding-top: 0%; padding-left: 16px">
+          <ion-label class="time-label"> {{ post.time }} </ion-label>
+          <ion-label class="likes-label"> {{ post.totalLikes }} likes</ion-label>
+        </ion-col>
+        <ion-col size="12" style="padding-top: 0%; padding-left: 16px;padding-right: 24px;">
           <p align='justify' class="post-desc">
-            {{ post.description }}
+        <strong style="padding-right: 16px; font-size: 18px"> {{getShortName(post.name)}}</strong>  {{ post.description }}
           </p>
-          <ion-label *ngFor="let tag of post.tags" color="primary" class="tag-label">
+          <ion-label *ngFor="let tag of post.tags" color="medium" class="tag-label">
             <span class="tag-hash">#</span>{{ tag }}
           </ion-label>
         </ion-col>
-        <ion-col size="12" style="padding-top: 0%; padding-bottom: 7%;">
-          <ion-label class="time-label"> {{ post.time }} </ion-label>
-          <ion-label class="likes-label"> {{ post.totalLikes }} likes</ion-label>
-          <span style="float: right;">
-            <ion-label class="view-more-label">View more</ion-label>
-            <ion-icon name="chevron-forward-circle-outline" style="vertical-align: middle;"></ion-icon>
+        <ion-col size="12" style="padding-top: 0%; padding-bottom: 16px;">
+          <span style="float: right; margin-right: 20px">
+            <ion-icon src="assets/icon/viewmore.svg" style="vertical-align: middle" id = "view"></ion-icon>
           </span>
         </ion-col>
       </ion-row>
