@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-row>
-      <ion-col size="1" class="back-button-col">
+      <ion-col size="1" class="modal-back-button-col">
         <ion-icon class="modal-back-button" src="assets/icon/back.svg" (click)=closeModal()></ion-icon>
       </ion-col>
       <ion-col size="10">
@@ -26,10 +26,6 @@
             </ion-col>
           </ion-row>
         </div>
-        <!-- <ion-img *ngIf="isPostImageUploaded" src="{{'data:image/png;base64,' + postImageBase64Value}}" class="post-img">
-        </ion-img>
-        <ion-icon *ngIf="isPostImageUploaded" name="trash" class="trash-icon"
-          (click)="isPostImageUploaded=false; postImageBase64Value=''"></ion-icon> -->
       </ion-col>
 
       <ion-col size="12" style="height: 50%;" *ngIf="isPostImageUploaded" class="no-padding-left-right-top">
