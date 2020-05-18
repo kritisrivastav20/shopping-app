@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import { CreatePostPage } from '../create-post/create-post.page';
+import { PublishPostPage } from '../publish-post/publish-post.page';
 
 @NgModule({
   imports: [
@@ -14,6 +16,14 @@ import { TabsPage } from './tabs.page';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [
+    TabsPage,
+    CreatePostPage,
+    PublishPostPage
+  ],
+  entryComponents: [
+    CreatePostPage,
+    PublishPostPage
+  ]
 })
-export class TabsPageModule {}
+export class TabsPageModule { }
