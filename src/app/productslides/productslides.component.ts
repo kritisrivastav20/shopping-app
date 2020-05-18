@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ToastController, ModalController } from '@ionic/angular';
-import { ProductslidesComponent } from '../productslides/productslides.component';
 
 @Component({
-  selector: 'app-home-tab',
-  templateUrl: 'home-tab.page.html',
-  styleUrls: ['home-tab.page.scss']
+  selector: 'app-productslides',
+  templateUrl: './productslides.component.html',
+  styleUrls: ['./productslides.component.scss'],
 })
-export class HomeTabPage implements OnInit {
+export class ProductslidesComponent implements OnInit {
 
-  public posts = [
+  // @Input() images: any;
+  @Input() index: any;
+
+  public images = [
     {
       name: 'Valeria Lipovetsky',
       profileImg: 'assets/images/avatar.svg',
@@ -58,22 +60,12 @@ export class HomeTabPage implements OnInit {
       totalLikes: '2.7k'
     }
   ];
-  ShowProducts: any = [];
-b: any;
-  constructor(private modal: ModalController) {
-   }
-   ngOnInit(){
-     this.ShowProducts.length = this.posts.length;
-   }
+  b:any;
+  constructor(private modal: ModalController) { }
 
-  getShortName(fullName) { 
-    return fullName.split(' ').slice(0, -1).join(' ');
+  ngOnInit() {
   }
-  OpenProducts(i){
-  this.ShowProducts[i] = true;
-  }
-  HideProducts(i){
-    this.ShowProducts[i] = false;
+  dismiss(){
   }
 
 }

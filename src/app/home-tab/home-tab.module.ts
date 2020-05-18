@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomeTabPage } from './home-tab.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-
+import { ProductslidesComponentModule } from '../productslides/productslides.module';
 import { HomeTabPageRoutingModule } from './home-tab-routing.module';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { HomeTabPageRoutingModule } from './home-tab-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
+    ProductslidesComponentModule,
     HomeTabPageRoutingModule
   ],
   declarations: [HomeTabPage]

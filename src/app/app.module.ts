@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { ProductslidesComponent } from './productslides/productslides.component';
+import { ProductslidesComponentModule } from './productslides/productslides.module';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -11,8 +12,8 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  entryComponents: [ProductslidesComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProductslidesComponentModule],
   providers: [
     StatusBar,
     SplashScreen,

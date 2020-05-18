@@ -31,6 +31,21 @@
     border-radius: 50%;
     font-size: 120%;
 }
+.over-image-options-product {
+    background: #FFFFFF;
+    display: flex;
+    bottom: 5%;
+    position: absolute;
+    left: 5%;
+    padding: 8px;
+    border-radius: 20px !important;
+    font-size: 15px;
+    color: #343333;
+    border-bottom: 1px solid #343333;
+    border-left: 1px solid #343333;
+    border-right: 1px solid #343333;
+    border-top: 1px solid #343333;
+}
 
 .post-footer-option-icon {
    width: 28px;
@@ -107,4 +122,20 @@
     padding-top: 3px;
     width: 107px;
     height: 23px
+}
+#popup{
+    height: 280px; width: 100%; z-index: 10;
+    display: flex;
+    bottom: 0%;
+    position: absolute;
+}
+#popbutton{
+    text-align: center;
+    margin-right: 8px;
+    display: flex;
+    top: 53%;
+    right: 5%;
+    position: absolute;
+    background: #D9DAD9;
+    border-radius: 50%;
 }
