@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['collections-tab.page.scss']
 })
 export class CollectionsTabPage {
+  selector: any = [];
 
-  constructor() {}
+  constructor() {
+    this.selector = "Current";
+  }
 
 }

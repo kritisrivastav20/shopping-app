@@ -1,10 +1,142 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Search Tab
-    </ion-title>
+<ion-header class="ion-no-border" lines = "none" *ngIf = "!showHashtags">
+  <ion-toolbar color="light">
+    <ion-row style="padding-top: 8px; width: 100%" color="light">
+        <ion-col size = "1" *ngIf = "viewsearches == true" style="padding: 16px">
+            <ion-icon name="arrow-back-outline" color = "primary" style="font-size: 22px"></ion-icon>
+        </ion-col>
+      <ion-col align="start" style="padding-top: 8px; padding-left: 24px;">
+        <img src="assets/icon/explore.svg" style="height: 40px" alt="" />
+      </ion-col>
+    </ion-row>
+     <ion-input
+     *ngIf = "!showHashtags"
+  style="padding-right: 8px"
+    class="rounded"
+    inputmode="text"
+    [(ngModel)]="search"
+    (click) = "showSearch()"
+    placeholder="Search for anything"
+  ></ion-input>
+  <ion-row style="padding-top: 8px; padding-left: 16px; padding-bottom: 8px;" *ngIf = "!viewsearches && !showHashtags">
+    <ion-button
+      expand="block"
+      fill="clear"
+      color="primary"
+      class="searchbutton"
+      style=" margin-right: 8px;"
+    >
+      Brand
+    </ion-button>
+    <ion-button
+      expand="block"
+      fill="clear"
+      color="primary"
+      class="searchbutton"
+      style=" margin-right: 8px;"
+    >
+      Category
+    </ion-button>
+    <ion-button
+      expand="block"
+      fill="clear"
+      color="primary"
+      class="searchbutton"
+      style=" margin-right: 8px;"
+    >
+      Shop
+    </ion-button>
+  </ion-row>
+  <ion-segment *ngIf = "viewsearches == true" [(ngModel)]="selector" style="background: #FFFFFF" id = "segment">
+      <ion-segment-button value="Current" fill = "clear" checked>
+        <ion-label  id = "button" >People</ion-label>
+      </ion-segment-button >
+      <ion-segment-button value="Products" fill = "clear" >
+        <ion-label id = "button">Products</ion-label>
+      </ion-segment-button >
+      <ion-segment-button value="Hashtags" fill = "clear">
+        <ion-label id = "button">Hashtags</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="adjustElementOnScroll($event)"  
+*ngIf = "!viewsearches && !showHashtags" >
+<div *ngFor="let post of posts">
+      <ion-item lines="none" class="ion-no-padding" style="margin-left: 8px; margin-right: 8px;
+      margin-top: 8px">
+        <ion-avatar slot="start" class = "profile-avatar">
+          <ion-img [src] = "post.profileImg"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <p style="color: inherit"><strong>{{post.name}}</strong></p>
+          <p>{{post.path}}</p>
+        </ion-label>
+        <ion-button shape="round" slot="end" color = "success">Follow</ion-button>
+        </ion-item>
+      <ion-slides class="image-slider" loop="true" slidesPerView="5">
+          <ion-slide *ngFor="let image of post.images" style="width: 100%">
+            <ion-col>
+              <ion-col  style="margin-top: 8px" size = "4">
+                <img src={{image}} class = "product"/>
+              </ion-col>
+              <ion-col  style="margin-top: 8px" size = "4">
+                  <img src={{image}} class = "product" style="padding-top: 5px;"/>
+                </ion-col>
+          </ion-col> <br>
+          <ion-col align = "start" style="margin-right: 8px;">
+              <ion-col style="margin-top: 8px">
+                <img src={{image}} class = "product"/>
+              </ion-col>
+              <ion-col style="margin-top: 8px">
+                  <img src={{image}} class = "product" style="padding-top: 4px;"/>
+                </ion-col>
+          </ion-col>
+          </ion-slide>
+        </ion-slides>
+      </div>
+</ion-content>
+
+<ion-content *ngIf = "viewsearches == true" style="padding-top: 8px">
+ 
+      <div [ngSwitch]="selector" color = "medium">
+      <ion-list *ngSwitchCase="'Current'"id = "list" >
+          <ion-item lines="none" class="ion-no-padding" style="margin-left: 8px; margin-right: 8px;
+          margin-top: 8px" *ngFor="let post of posts">
+            <ion-avatar slot="start" class = "profile-avatar">
+              <ion-img [src] = "post.profileImg"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <p style="color: inherit"><strong>{{post.name}}</strong></p>
+              <p>2M followers</p>
+            </ion-label>
+            <ion-button *ngIf="!post.isFollow" shape="round" slot="end" color = "success" (click)="post.isFollow=!post.isFollow">Follow</ion-button>
+            <ion-button *ngIf="post.isFollow" shape="round" slot="end" fill = "clear" class = "following" (click)="post.isFollow=!post.isFollow">Following</ion-button>
+            </ion-item>
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'Products'" id = "list">
+        <ion-item *ngFor="let image of images; let i = index" lines = "none">
+              <ion-col class = "productcol">
+                <img src={{image.product[0]}} class = "product"/>
+              </ion-col>
+              <ion-col clasee = "productcol">
+                  <img src={{image.product[1]}} class = "product"/>
+                </ion-col>
+        </ion-item>
+      </ion-list>
+  
+       <ion-list *ngSwitchCase="'Hashtags'" id = "list">
+          <ion-item lines="none" class="ion-no-padding" style="margin-left: 8px; margin-right: 8px;
+          margin-top: 8px" *ngFor="let image of images" (click) = "viewHashtags()">
+            <ion-label style="padding-left: 16px">
+              <p style="color: #404642; font-size: 16px"><strong>{{image.tag}}</strong></p>
+            </ion-label>
+                <p style="color:#848484">{{image.posts}}</p>
+            </ion-item>
+      </ion-list>
+    </div>
+</ion-content>
+<ion-content *ngIf = "showHashtags == true" style="margin-top: 24px">
+<app-hashtags></app-hashtags>
 </ion-content>

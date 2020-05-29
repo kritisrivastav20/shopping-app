@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'publish-post',
     loadChildren: () => import('./publish-post/publish-post.module').then( m => m.PublishPostPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   }
 
 ];

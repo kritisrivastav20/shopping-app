@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchTabPage } from './search-tab.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-
+import { HashtagsComponentModule } from '../hashtags/hashtags.module';
 import { SearchTabPageRoutingModule } from './search-tab-routing.module';
 
 @NgModule({
@@ -14,6 +14,7 @@ import { SearchTabPageRoutingModule } from './search-tab-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
+    HashtagsComponentModule,
     SearchTabPageRoutingModule
   ],
   declarations: [SearchTabPage]

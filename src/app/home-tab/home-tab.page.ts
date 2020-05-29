@@ -8,7 +8,7 @@ import { ProductslidesComponent } from '../productslides/productslides.component
   styleUrls: ['home-tab.page.scss']
 })
 export class HomeTabPage implements OnInit {
-
+  a: any;
   public posts = [
     {
       name: 'Valeria Lipovetsky',
@@ -75,5 +75,12 @@ b: any;
   HideProducts(i){
     this.ShowProducts[i] = false;
   }
+  adjustElementOnScroll(ev) {
+    this.a = document.getElementById("header");
+          this.a.style.display = 'none'; 
+          if(ev.detail.deltaY < 0){
+            this.a.style.display = 'block'; 
+          }
+}
 
 }
