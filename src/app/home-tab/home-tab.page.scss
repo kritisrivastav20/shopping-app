@@ -48,8 +48,8 @@
 }
 
 .post-footer-option-icon {
-   width: 28px;
-   height: 25px;
+    width: 28px;
+    height: 25px;
     padding-right: 16px;
 }
 
@@ -97,28 +97,39 @@
     height: 50px;
     width: 50px;
 }
+
 #icon{
     width: 26px;
     height: 26px;
 }
-#button{
+
+#icon {
+    width: 33px;
+    height: 33px;
+
+}
+
+#button {
     border-radius: 50%;
     border: 1px;
 }
-#following{
+
+#following {
     border-bottom: 1px solid #343333;
-       border-left: 1px solid #343333;
-       border-right: 1px solid #343333;
-       border-top: 1px solid #343333;
-       text-align: center;
-       margin-right: 8px;
+    border-left: 1px solid #343333;
+    border-right: 1px solid #343333;
+    border-top: 1px solid #343333;
+    text-align: center;
+    margin-right: 8px;
 }
-#actions{
+
+#actions {
     padding-top: 8px;
     padding-bottom: 8px;
     height: 45px;
 }
-#view{
+
+#view {
     padding-top: 3px;
     width: 107px;
     height: 23px
