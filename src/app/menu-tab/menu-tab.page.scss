@@ -1,0 +1,43 @@
+.displaypic {
+    width: 170px;
+    height: 170px;
+       border-radius: 50% !important;
+       background-size: contain;
+       object-fit: cover;
+  }
+.camera{
+    position: absolute;
+  top: 82%;
+  left: 68%;
+  background: #FFFFFF;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 28px;
+  padding: 4px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50% !important;
+  box-shadow: 4px 10px 12px #DADADA;
+    }
+
+    .product{
+      object-fit: cover;
+      height: 150px;
+      width: 100%;
+      padding-left: 4px;
+      padding-right: 4px;
+      padding-bottom: 2px;
+      padding-top: 2px;
+  }
+  .container{
+      margin-top: 8px;
+      column-count: 3;
+      padding: 0px;
+      margin: 0px;
+      column-gap: 0px;
+      padding-left: 5px;
+      padding-right: 5px
+  }
+  .productcol{
+  width: 100%;
+  }

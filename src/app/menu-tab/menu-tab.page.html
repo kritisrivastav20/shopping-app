@@ -1,10 +1,92 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Menu Tab
-    </ion-title>
+<ion-header color = "light"  class="ion-no-border"  lines = "none">
+  <ion-toolbar color = "light">
+    <ion-row style="width: 100%" color = "light" >
+      <ion-col size="2" style="padding-right: 8px; padding-top: 8px;" align = "start">
+        <ion-button fill="clear" shape="round">
+          <ion-icon name = "arrow-back" slot="icon-only" color = "primary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col align = "start" style="padding-top: 16px; padding-left: 16px;">
+          <strong style="font-size: 24px; color: #343333">Liliana Ava</strong>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col align = "center">
+        <div style="margin-top: 8px">
+            <img class="displaypic" src = "/assets/images/post.svg" />
+            <ion-icon
+            class="camera"
+            name = "camera"
+            color = "primary"
+          > </ion-icon>
+          </div>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-top: 16px; border-bottom:1px solid #DADADA;">
+    <ion-col align = "center">
+<strong style="font-size: 17px; color: #343333">200</strong><br>
+<a style="font-size: 16px; color: #848484">Following</a>
+    </ion-col>
+    <ion-col align = "center">
+        <strong style="font-size: 17px; color: #343333">25.6K</strong><br>
+        <a style="font-size: 16px; color: #848484">Followers</a>
+    </ion-col>
+    <ion-col align = "center">
+        <strong style="font-size: 17px; color: #343333">1041</strong><br>
+        <a style="font-size: 16px; color: #848484">Posts</a>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-top: 8px; padding-bottom: 8px;">
+    <ion-col align = "start" style="padding-left: 16px">
+        <a style="font-size: 14px; color: #343333">Pictures from home and lifestyle
+        <br>Shop now!!</a>
+    </ion-col>
+  </ion-row>
+  <ion-segment [(ngModel)]="selector" style="background: #FFFFFF; padding-bottom: 5px;" id = "segment">
+      <ion-segment-button value="Current" fill = "clear" checked>
+        <ion-label  id = "button" >Posts</ion-label>
+      </ion-segment-button >
+      <ion-segment-button value="Styles" fill = "clear" >
+        <ion-label id = "button">Styles</ion-label>
+      </ion-segment-button >
+    <ion-segment-button value="Collection" fill = "clear" >
+      <ion-label id = "button">Collection</ion-label>
+    </ion-segment-button >
+  </ion-segment>
+
+  <div [ngSwitch]="selector" color = "medium">
+      <ion-list *ngSwitchCase="'Current'"id = "list" >
+        
+         <div class = "container" >
+            <div class = "productcol" *ngFor="let image of images; let i = index" >
+              <img src={{image.product}} class = "product"/>
+            </div>
+            </div>
+         
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'Styles'" id = "list">
+       
+            <div class = "container" >
+                <div class = "productcol" *ngFor="let image of images; let i = index" >
+                  <img src={{image.product}} class = "product"/>
+                </div>
+                </div>
+       
+      </ion-list>
+  
+       <ion-list *ngSwitchCase="'Collection'" id = "list">
+         
+          <div class = "container" >
+              <div class = "productcol" *ngFor="let image of images; let i = index" >
+                <img src={{image.product}} class = "product"/>
+              </div>
+              </div>
+          
+      </ion-list>
+    </div>
 </ion-content>

@@ -11,7 +11,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-  <ion-segment [(ngModel)]="selector" style="background: #FFFFFF" id = "segment">
+  <ion-segment [(ngModel)]="selector" style="background: #FFFFFF; padding-bottom: 5px;" id = "segment">
     <ion-segment-button value="Current" fill = "clear" checked>
       <ion-label  id = "button" >Posts</ion-label>
     </ion-segment-button >
@@ -21,8 +21,8 @@
   </ion-segment>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div>
+<ion-content [fullscreen]="true" [ngSwitch]="selector" >
+  <div *ngSwitchCase="'Products'">
     <ion-item lines="none" class="ion-no-padding" style="margin-left: 16px;
       margin-top: 8px">
         <ion-label>
@@ -42,12 +42,11 @@
                <a style="font-size: 16px; color: #343333">{{image.tag}}</a> <br>
                <a style="font-size: 14px; color: #848484">{{image.posts}}</a>
                   </ion-col>
+                  <ion-icon src="assets/icon/liked.svg" class="over-image-options-div"
+                  ></ion-icon> 
             </ion-col>
             </ion-slide>
           </ion-slides>
-          </div>
-
-          <div>
               <ion-item lines="none" class="ion-no-padding" style="margin-left: 16px;
                 margin-top: 8px">
                   <ion-label>
@@ -58,20 +57,20 @@
                   <ion-icon slot="end" src="assets/icon/options.svg"></ion-icon>
                   </ion-item>
                   <ion-slides class="image-slider" loop="true" [options]="sliderConfig">
-                      <ion-slide *ngFor="let image of images" >
+                      <ion-slide *ngFor="let post of posts" >
                         <ion-col>
                           <ion-col  style="margin-top: 8px">
-                            <img src="{{image.product}}" style="object-fit: cover" class = "product"/>
+                            <img src="{{post.postImg}}" style="object-fit: cover" class = "product"/>
                           </ion-col>
                           <ion-col  style="margin-top: 8px; align-content: flex-start;">
-                         <a style="font-size: 16px; color: #343333">{{image.tag}}</a> <br>
-                         <a style="font-size: 14px; color: #848484">{{image.posts}}</a>
+                         <a style="font-size: 16px; color: #343333">{{post.tag}}</a> <br>
+                         <a style="font-size: 14px; color: #848484">{{post.posts}}
+                          <ion-icon src="assets/icon/dots.svg" style="padding-left: 4px; margin-top: 5px"></ion-icon></a>
                             </ion-col>
                       </ion-col>
                       </ion-slide>
                     </ion-slides>
-                    </div>
-                    <div>
+                  
                         <ion-item lines="none" class="ion-no-padding" style="margin-left: 16px;
                           margin-top: 8px">
                             <ion-label>
@@ -89,15 +88,24 @@
                                     </ion-col>
                                     <ion-col  style="margin-top: 8px; align-content: flex-start;">
                                    <a style="font-size: 16px; color: #343333">{{image.tag}}</a> <br>
-                                   <a style="font-size: 14px; color: #848484">{{image.posts}}</a>
+                                   <a style="font-size: 14px; color: #848484">{{image.posts}}
+                                    <ion-icon src="assets/icon/dots.svg" style="padding-left: 4px; margin-top: 5px"></ion-icon></a>
                                       </ion-col>
                                 </ion-col>
                                 </ion-slide>
                               </ion-slides>
-                              </div>          
+                              <ion-toolbar>
+                                <ion-button expand="block" fill="solid" color = "primary" shape="block" style=" margin-right: 16px; margin-left: 16px">
+                                    Create a collection
+                                  </ion-button>
+                            </ion-toolbar>
+                              </div>    
+                              
+                            <div class = "container" *ngSwitchCase="'Current'">
+                              <div class = "productcol" *ngFor="let image of images; let i = index" >
+                                <img src={{image.product}} class = "productposts"/>
+                                <ion-icon src="assets/icon/liked.svg" class="over-image-likes-div"
+                                ></ion-icon>
+                              </div>
+                              </div>
 </ion-content>
-<ion-toolbar>
-    <ion-button expand="block" fill="solid" color = "primary" shape="block" style=" margin-right: 16px; margin-left: 16px">
-        Create a collection
-      </ion-button>
-</ion-toolbar>
