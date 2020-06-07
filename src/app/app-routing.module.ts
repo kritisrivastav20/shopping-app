@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'favorites',
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
+  {
+    path: 'followers',
+    loadChildren: () => import('./followers/followers.module').then( m => m.FollowersPageModule)
   }
 
 ];
